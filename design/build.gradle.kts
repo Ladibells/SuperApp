@@ -2,13 +2,10 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt.android.plugin)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "dev.ladibells.wealth"
+    namespace = "dev.ladibells.design"
     compileSdk {
         version = release(36)
     }
@@ -34,20 +31,17 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
     kotlinOptions {
         jvmTarget = "17"
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
-    }
-    buildFeatures {
-        buildConfig = true
-        compose = true
     }
 }
 
@@ -58,14 +52,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.android)
-    ksp(libs.androidx.hilt.compiler)
-    implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
-    implementation(libs.navigation.compose)
-    implementation(libs.lottie)
 
     implementation(libs.androidx.compose.runtime)
 }
