@@ -2,4 +2,11 @@
 <resources>
 
     <style name="Theme.SuperApp" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.SuperApp</item>
+    </style>
+
 </resources>
