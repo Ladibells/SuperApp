@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wealth">Wealth</string>
+    <string name="add_address">Add Address</string>
+    <string name="investment_ideas_for_you">Investment ideas for you</string>
+</resources>

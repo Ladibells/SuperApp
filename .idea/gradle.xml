@@ -10,7 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/datasource" />
             <option value="$PROJECT_DIR$/design" />
+            <option value="$PROJECT_DIR$/festival" />
             <option value="$PROJECT_DIR$/utilities" />
             <option value="$PROJECT_DIR$/wealth" />
           </set>
