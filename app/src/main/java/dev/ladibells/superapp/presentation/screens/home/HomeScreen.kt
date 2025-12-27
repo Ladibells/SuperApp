@@ -1,4 +1,4 @@
-package dev.ladibells.superapp.screens.home
+package dev.ladibells.superapp.presentation.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -22,7 +22,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import dev.ladibells.design.R
 import dev.ladibells.design.components.AppToolBar
 import dev.ladibells.design.components.BannerComponent
-import dev.ladibells.design.components.WeatherBannerComponent
+import dev.ladibells.design.components.FestivalBannerComponent
 import dev.ladibells.design.ui.theme.whiteColor
 
 //@Composable
@@ -41,17 +41,18 @@ import dev.ladibells.design.ui.theme.whiteColor
 //    }
 //}
 
+private const val s = "Investment ideas for you"
 
 @Composable
 fun HomeScreen(
     primaryButtonClicked: () -> Unit = {},
     wealthBannerClicked: () -> Unit = {},
-//    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: HomeViewModel = hiltViewModel(),
     festivalBannerClicked: () -> Unit = {},
     addAddressClicked: () -> Unit = {}
 ) {
 
-//    val state = viewModel.state.value
+    val state = viewModel.state.value
 
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(lifecycleOwner) {
@@ -82,27 +83,27 @@ fun HomeScreen(
                 .padding(innerPadding)
         ){
 
-//            if (state.isLoading) {
-//                CircularProgressIndicator(
-//                    modifier = Modifier
-//                        .size(40.dp)
-//                        .align(Alignment.CenterHorizontally)
-//                )
-//            }
+            if (state.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+            }
 
-//            if (state.festivalName != null) {
-//                FestivalBannerComponent(
-//                    title = state.festivalName,
-//                    description = state.festivalDescription,
-//                    imageUrl = null,
-//                    resourceValue = drawable.holi,
-//                    festivalBannerClicked = { festivalBannerClicked() }
-//                )
-//            }
+            if (state.festivalName != null) {
+                FestivalBannerComponent(
+                    title = state.festivalName,
+                    description = state.festivalDescription,
+                    imageUrl = null,
+                    resourceValue = R.drawable.ic_wealth,
+                    festivalBannerClicked = { festivalBannerClicked() }
+                )
+            }
 
             BannerComponent(
-                title = stringResource(R.string.wealth),
-                description = stringResource(R.string.investment_ideas_for_you),
+                title = stringResource(id = R.string.wealth),
+                description = stringResource(id = R.string.investment_ideas_for_you),
                 imageUrl = null,
                 resourceValue = R.drawable.ic_wealth1,
                 bannerClicked = {

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -18,6 +19,7 @@ fun ChipTextComponent(textValue: String) {
         TextComponent(
             modifier = Modifier.wrapContentSize().padding(all = 12.dp),
             textValue = textValue,
+            fontWeightValue = FontWeight.Normal,
             fontSizeValue = 16.sp
         )
     }

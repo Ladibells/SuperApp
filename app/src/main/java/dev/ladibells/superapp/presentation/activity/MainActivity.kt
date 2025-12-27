@@ -1,4 +1,4 @@
-package dev.ladibells.superapp.activity
+package dev.ladibells.superapp.presentation.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
-import dev.ladibells.superapp.screens.AppNavGraph
+import dev.ladibells.superapp.presentation.screens.AppNavGraph
 import dev.ladibells.superapp.ui.theme.SuperAppTheme
 
 @AndroidEntryPoint

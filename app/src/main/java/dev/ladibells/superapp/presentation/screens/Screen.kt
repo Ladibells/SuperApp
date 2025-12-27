@@ -1,4 +1,4 @@
-package dev.ladibells.superapp.screens
+package dev.ladibells.superapp.presentation.screens
 
 sealed class Screen(val route: String) {
 

@@ -1,4 +1,4 @@
-package dev.ladibells.superapp.screens
+package dev.ladibells.superapp.presentation.screens
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
@@ -11,7 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import dev.ladibells.superapp.screens.home.HomeScreen
+import dev.ladibells.superapp.presentation.screens.home.HomeScreen
 import dev.ladibells.utilities.logging.AppLogger
 import dev.ladibells.wealth.presentation.screens.details.CoinDetailsScreen
 import dev.ladibells.wealth.presentation.screens.wealthhome.WealthHomeScreen
@@ -103,6 +103,10 @@ fun AppNavGraph() {
                     )
                 }
             }
+
+            composable(
+                route = Screen.FestivalHomeScreen.route
+            ) {}
         }
     }
 }

@@ -38,10 +38,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    buildFeatures {
+        buildConfig = true
+        compose = true
     }
 }
 
@@ -64,4 +68,6 @@ dependencies {
     implementation(libs.coil.network.okhttp)
 
     implementation(libs.androidx.compose.runtime)
+
+    implementation(libs.kotlinx.serialization.json)
 }

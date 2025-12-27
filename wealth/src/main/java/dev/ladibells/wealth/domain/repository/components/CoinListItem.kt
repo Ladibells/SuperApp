@@ -37,7 +37,7 @@ fun CoinListItem(
                 coinItemClicked(coin.id)
             }
             .padding(top = 18.dp, start = 18.dp, end = 18.dp)
-            .border(1.dp, primaryColor, RoundedCornerShape(2.dp))
+            .border(1.dp, primaryColor, RoundedCornerShape(12.dp))
     ) {
         Row(
             modifier = Modifier
@@ -52,15 +52,16 @@ fun CoinListItem(
                     modifier = Modifier.wrapContentSize(),
                     textValue = coin.name,
                     textColorValue = primaryColor,
-                    fontWeightValue = FontWeight.Bold
+                    fontWeightValue = FontWeight.ExtraBold
                 )
                 TextComponent(
                     modifier = Modifier.wrapContentSize(),
-                    textValue = coin.symbol
+                    textValue = coin.symbol,
                 )
             }
             TextComponent(
                 modifier = Modifier.wrapContentSize(),
+                fontWeightValue = FontWeight.Medium,
                 textValue = if (coin.isActive) "active" else "inactive",
                 textColorValue = if (coin.isActive) greenColor else lightBlackColor
             )

@@ -153,11 +153,13 @@ fun CoinPrimaryInfoComponent(coinDetail: CoinDetail) {
                 TextComponent(
                     modifier = Modifier.wrapContentSize().padding(horizontal = 12.dp),
                     textValue = coinDetail.name,
+                    fontWeightValue = FontWeight.ExtraBold,
                     fontSizeValue = 25.sp
                 )
                 TextComponent(
                     modifier = Modifier.wrapContentSize().padding(horizontal = 12.dp),
                     textValue = coinDetail.symbol,
+                    fontWeightValue = FontWeight.SemiBold,
                     fontSizeValue = 18.sp
                 )
 
@@ -190,7 +192,8 @@ fun CoinPrimaryInfoComponent(coinDetail: CoinDetail) {
                     modifier = Modifier.wrapContentSize().padding(horizontal = 12.dp),
                     textValue = authorName,
                     fontSizeValue = 18.sp,
-                    textColorValue = greenColor
+                    textColorValue = greenColor,
+                    fontWeightValue = FontWeight.SemiBold
                 )
             }
         }

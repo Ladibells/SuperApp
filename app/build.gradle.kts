@@ -42,6 +42,7 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -57,6 +58,7 @@ dependencies {
     implementation(project((":utilities")))
     implementation(project((":wealth")))
     implementation(project((":design")))
+    implementation(project((":festival")))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -88,4 +90,8 @@ dependencies {
     implementation(libs.navigation.compose)
 
     implementation(libs.androidx.compose.runtime)
+
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.supabase.postgrest.kt)
+    implementation(libs.ktor.client.android)
 }
