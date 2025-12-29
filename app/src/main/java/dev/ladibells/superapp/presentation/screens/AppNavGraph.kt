@@ -30,12 +30,23 @@ fun AppNavGraph() {
         ) {
             composable(
                 route = Screen.HomeScreen.route,
+                enterTransition = {
+                    slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Left,
+                        tween(500)
+                    )
+                },
                 popEnterTransition = {
                     slideIntoContainer(
                         AnimatedContentTransitionScope.SlideDirection.Right,
                         tween(500)
                     )
-                }
+                },
+//                arguments = listOf(
+//                    navArgument(name = "${ScreenArguments.COIN_ID}") {
+//                        type = NavType.StringType
+//                    }
+//                )
             ) {
                 HomeScreen(
                     primaryButtonClicked = {
