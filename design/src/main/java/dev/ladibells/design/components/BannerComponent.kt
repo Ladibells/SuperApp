@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -204,8 +205,9 @@ fun FestivalBannerComponent(
 
 @Composable
 fun WeatherBannerComponent(
-    title: String? = null,
-    description: String? = null,
+    cityName: String? = null,
+    temperature: String? = null,
+    airQuality: String? = null,
     imageUrl: String? = null,
     resourceValue: Int? = null,
     bannerClicked: () -> Unit = {}
@@ -214,7 +216,7 @@ fun WeatherBannerComponent(
         modifier = Modifier
             .fillMaxWidth()
             .defaultMinSize(minHeight = 138.dp)
-            .wrapContentHeight()
+//            .wrapContentHeight()
             .clickable {
                 bannerClicked()
             }
@@ -234,7 +236,9 @@ fun WeatherBannerComponent(
     ){
         imageUrl?.let {
             AsyncImage(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.wrapContentSize()
+                    .defaultMinSize(minHeight = 80.dp, minWidth = 80.dp)
+                    .align(Alignment.BottomEnd),
                 model = imageUrl,
                 contentDescription = "Banner Image",
                 contentScale = ContentScale.Crop
@@ -257,27 +261,48 @@ fun WeatherBannerComponent(
                 .wrapContentHeight()
                 .padding(18.dp),
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.SpaceEvenly
 
         ){
-            title?.let {
-                TextComponent(
-                    modifier = Modifier
-                        .wrapContentSize(),
-                    textValue = title,
-                    fontSizeValue = 20.sp,
-                    textColorValue = Color.White,
-                    fontWeightValue = FontWeight.Bold
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+//                    .wrapContentHeight(),
+                ,horizontalArrangement = Arrangement.SpaceBetween,
 
-                )
+            ) {
+                cityName?.let {
+                    TextComponent(
+                        modifier = Modifier
+                            .wrapContentSize(),
+                        textValue = cityName,
+                        fontSizeValue = 20.sp,
+                        textColorValue = Color.White,
+                        fontWeightValue = FontWeight.Bold
+
+                    )
+                }
+
+                airQuality?.also {
+                    TextComponent(
+                        modifier = Modifier
+                            .wrapContentSize(),
+                        textValue = "Air Quality: $it",
+                        fontSizeValue = 16.sp,
+                        textColorValue = Color.White,
+//                        fontWeightValue = FontWeight.Bold
+
+                    )
+                }
             }
 
-            description?.let {
+            temperature?.let {
                 TextComponent(
                     modifier = Modifier
                         .wrapContentSize(),
-                    textValue = description,
+                    textValue = temperature,
                     textColorValue = Color.White,
+                    fontSizeValue = 28.sp
                 )
             }
         }

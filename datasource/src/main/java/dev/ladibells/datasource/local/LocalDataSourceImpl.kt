@@ -6,7 +6,7 @@ import dev.ladibells.datasource.local.entity.Coin
 import dev.ladibells.datasource.local.entity.UserLocation
 
 class LocalDataSourceImpl(
-    @ApplicationContext private val context: Context
+    @ApplicationContext val context: Context
 ) : LocalDataSource {
 
     private val appDB : AppDB = AppDB.getDatabase(context)

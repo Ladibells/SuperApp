@@ -57,8 +57,10 @@ dependencies {
 
     implementation(project((":utilities")))
     implementation(project((":wealth")))
+    implementation(project((":datasource")))
     implementation(project((":design")))
     implementation(project((":festival")))
+    implementation(project((":weather")))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

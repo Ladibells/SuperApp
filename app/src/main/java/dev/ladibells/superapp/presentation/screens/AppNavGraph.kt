@@ -15,6 +15,8 @@ import dev.ladibells.superapp.presentation.screens.home.HomeScreen
 import dev.ladibells.utilities.logging.AppLogger
 import dev.ladibells.wealth.presentation.screens.details.CoinDetailsScreen
 import dev.ladibells.wealth.presentation.screens.wealthhome.WealthHomeScreen
+import dev.ladibells.weather.presentation.screens.address.AddressScreen
+import dev.ladibells.weather.presentation.screens.weather_home.WeatherHomeScreen
 
 @Composable
 fun AppNavGraph() {
@@ -50,11 +52,17 @@ fun AppNavGraph() {
             ) {
                 HomeScreen(
                     primaryButtonClicked = {
-                        navController.navigate(Screen.WealthHomeScreen.route)
+//                        navController.navigate(Screen.WealthHomeScreen.route)
                     },
                     wealthBannerClicked = {
                         navController.navigate(Screen.WealthHomeScreen.route)
                     },
+                    addAddressClicked = {
+                        navController.navigate(Screen.AddressScreen.route)
+                    },
+                    weatherBannerClicked = {
+                        navController.navigate(Screen.WeatherHomeScreen.route)
+                    }
                 )
             }
 
@@ -116,8 +124,37 @@ fun AppNavGraph() {
             }
 
             composable(
-                route = Screen.FestivalHomeScreen.route
-            ) {}
+                route = Screen.AddressScreen.route
+            ) {
+                AddressScreen(
+                    primaryButtonClicked = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+
+            composable(
+                route = Screen.WeatherHomeScreen.route,
+                enterTransition = {
+                    slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Left,
+                        tween(500)
+                    )
+                },
+                popExitTransition = {
+                    slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        tween(500)
+                    )
+                },
+                popEnterTransition = null
+            ) {
+                WeatherHomeScreen(
+                    primaryButtonClicked = {
+                        navController.popBackStack()
+                    }
+                )
+            }
         }
     }
 }

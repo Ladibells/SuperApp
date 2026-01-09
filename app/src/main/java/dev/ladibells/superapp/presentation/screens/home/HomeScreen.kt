@@ -23,23 +23,8 @@ import dev.ladibells.design.R
 import dev.ladibells.design.components.AppToolBar
 import dev.ladibells.design.components.BannerComponent
 import dev.ladibells.design.components.FestivalBannerComponent
+import dev.ladibells.design.components.WeatherBannerComponent
 import dev.ladibells.design.ui.theme.whiteColor
-
-//@Composable
-//fun HomeScreen(
-//) {
-//    Scaffold(
-//        topBar = { AppToolBar() }
-//    ) { innerPadding ->
-//        Column(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .wrapContentSize()
-//                .background(whiteColor),
-//        ) {
-//        }
-//    }
-//}
 
 private const val s = "Investment ideas for you"
 
@@ -49,7 +34,8 @@ fun HomeScreen(
     wealthBannerClicked: () -> Unit = {},
     viewModel: HomeViewModel = hiltViewModel(),
     festivalBannerClicked: () -> Unit = {},
-    addAddressClicked: () -> Unit = {}
+    addAddressClicked: () -> Unit = {},
+    weatherBannerClicked: () -> Unit = {}
 ) {
 
     val state = viewModel.state.value
@@ -57,14 +43,14 @@ fun HomeScreen(
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//            viewModel.refresh()
+            viewModel.refresh()
         }
     }
     Scaffold (
         topBar = {
             AppToolBar(
-//                title = if (state.selectedCity.isNotEmpty()) state.selectedCity else stringResource(R.string.add_address),
-                title = stringResource(R.string.add_address),
+                title = state.selectedCity.ifEmpty { stringResource(R.string.add_address) },
+//                title = stringResource(R.string.add_address),
                 isNotificationButtonVisible = true,
                 primaryButtonClicked = {
                     primaryButtonClicked()
@@ -111,12 +97,19 @@ fun HomeScreen(
                 }
             )
 
-//            WeatherBannerComponent(
-//                title = stringResource(R.string.weather),
+            state.weatherHomeUIState?.also {
+                WeatherBannerComponent(
+                    cityName = it.locationName,
 //                description = if (state.weatherHomeUIState?.temperature != null) "${state.weatherHomeUIState.temperature} ${state.weatherHomeUIState.unit}" else null,
-//                imageUrl = null,
-//                resourceValue = null
-//            )
+                    imageUrl = it.weatherIcon.toString(),
+                    temperature = it.temperature.toString(),
+                    airQuality = it.airQuality03.toString(),
+                    resourceValue = null,
+                    bannerClicked = {
+                        weatherBannerClicked.invoke()
+                    }
+                )
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ interface LocalDataSource {
     fun insertCoinListInDB(coinList: List<Coin>)
     fun deleteAllCoinsFromDB()
 
-    //Wealth module
+    //Weather module
     fun insertUserLocationInDB(cityName: String)
     fun getUserLocationFromDB() : String
 
